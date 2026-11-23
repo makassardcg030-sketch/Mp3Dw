@@ -125,16 +125,16 @@ class YTMP3App(App):
     def _show_folder_chooser(self, instance):
         content = BoxLayout(orientation="vertical")
         self.filechooser = FileChooserListView(path=str(Path.home() / "Downloads"), size_hint_y=0.8)
-        content.add_row(self.filechooser)
+        content.add_widget(self.filechooser)
 
         btn_row = BoxLayout(orientation="horizontal", size_hint_y=0.2)
         btn_ok = Button(text="Pilih", size_hint_x=0.5)
         btn_ok.bind(on_press=lambda _: self._select_folder())
         btn_cancel = Button(text="Batal", size_hint_x=0.5)
         btn_cancel.bind(on_press=lambda _: self._close_folder_chooser())
-        btn_row.add_row(btn_ok)
-        btn_row.add_row(btn_cancel)
-        content.add_row(btn_row)
+        btn_row.add_widget(btn_ok)
+        btn_row.add_widget(btn_cancel)
+        content.add_widget(btn_row)
 
         self.folder_popup = Popup(
             title="Pilih Folder Output",
