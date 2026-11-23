@@ -23,23 +23,42 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+<<<<<<< HEAD
         pip install buildozer cython kivy
     
     - name: Build APK with Buildozer
       run: |
         buildozer android debug
+=======
+        pip install buildozer cython
+    
+    - name: Build APK with Buildozer
+      uses: ArtemSBulgakov/buildozer-action@v1
+      id: buildozer
+      with:
+        command: buildozer android debug
+        buildozer_version: stable
+>>>>>>> e4f71fc23b43ab89b90e3e7fa385def43d6c89cb
     
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
       with:
         name: YTMP3-APK
+<<<<<<< HEAD
         path: bin/*.apk
+=======
+        path: ${{ steps.buildozer.outputs.apk_path }}
+>>>>>>> e4f71fc23b43ab89b90e3e7fa385def43d6c89cb
         retention-days: 30
     
     - name: Create Release on tag
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v1
       with:
+<<<<<<< HEAD
         files: bin/*.apk
+=======
+        files: ${{ steps.buildozer.outputs.apk_path }}
+>>>>>>> e4f71fc23b43ab89b90e3e7fa385def43d6c89cb
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

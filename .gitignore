@@ -40,6 +40,10 @@ htmlcov/
 .tox/
 
 # Build outputs
+<<<<<<< HEAD
+=======
+*.spec
+>>>>>>> e4f71fc23b43ab89b90e3e7fa385def43d6c89cb
 build/
 bin/
 
